@@ -45,50 +45,10 @@ const man = {
 };
 
 // ======== OUTPUT ========
-/* Use print(message) for output.
-   Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
+const inhabitants = [dog, cat, woman, man];
 
-   Message can contain HTML markup. You may also tweak index.html and/or styles.css.
-   However, please, REFRAIN from improving visuals at least until your code is reviewed
-   so code reviewers might focus on a single file that is index.js.
-   */
+const keys = ["species", "name", "gender", "legs", "hands", "saying"];
 
-/* Print examples:
-   print('ABC');
-   print('<strong>ABC</strong>');
-   print('<strong>ABC</strong>', 'div');
-
-   print('human; John; male; 2; 2; Hello world!; Rex, Tom, Jenny');
-   print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
-   print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
-   */
-
-   print(dog.species + ';' + dog.name + ';' + dog.gender + ';' + 
-  dog.legs + ';' + dog.hands + ';' + dog.saying, 'div');
-
-  print(cat.name + ';' + cat.gender);
-
-  print(woman.name + '- before change');
-  woman.name = "Sveta";
-
-  print(woman.name + '- after change');
-
-  let manCopy = Object.assign({}, man);
-
-  print(manCopy.name + ';' + man.saying);
-
-  manCopy.legs = 3;
-
-  print(man.legs);
-
-  print(manCopy.legs);
-
-//   copy json parse deep
-
-let womanCopy = JSON.parse(JSON.stringify(woman));
-print(womanCopy.name);
-
-//copy array as shallow copy(spread operator)
-
-let catCopy = {...cat};
-print(cat.name)
+inhabitants.map((inhabitant) => {
+   print(keys.map((key) => inhabitant[key]).join(', '), 'div');
+});
