@@ -8,7 +8,41 @@ import { print } from './js/lib.js';
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
+const dog = {
+    species: 'dog',
+    name: 'Toby',
+    gender: 'male',
+    legs: 4,
+    hands: 0,
+    saying: 'woof-woof!'
+};
 
+const cat = {
+    species: 'cat',
+    name: 'Simba',
+    gender: 'female',
+    legs: 4,
+    hands: 0,
+    saying: 'meuw-meuw!'
+};
+
+const woman = {
+    species: 'woman',
+    name: 'Katie',
+    gender: 'female',
+    legs: 2,
+    hands: 2,
+    saying: 'Hey, my name is Katie!'
+};
+
+const man = {
+    species: 'man',
+    name: 'Alex',
+    gender: 'male',
+    legs: 2,
+    hands: 2,
+    saying: 'Hey, my name is Alex!'
+};
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
@@ -28,3 +62,33 @@ import { print } from './js/lib.js';
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
+
+   print(dog.species + ';' + dog.name + ';' + dog.gender + ';' + 
+  dog.legs + ';' + dog.hands + ';' + dog.saying, 'div');
+
+  print(cat.name + ';' + cat.gender);
+
+  print(woman.name + '- before change');
+  woman.name = "Sveta";
+
+  print(woman.name + '- after change');
+
+  let manCopy = Object.assign({}, man);
+
+  print(manCopy.name + ';' + man.saying);
+
+  manCopy.legs = 3;
+
+  print(man.legs);
+
+  print(manCopy.legs);
+
+//   copy json parse deep
+
+let womanCopy = JSON.parse(JSON.stringify(woman));
+print(womanCopy.name);
+
+//copy array as shallow copy(spread operator)
+
+let catCopy = {...cat};
+print(cat.name)
