@@ -5,50 +5,64 @@ import { print } from './js/lib.js';
    Code repository: https://github.com/Dovahkiin1991/a-tiny-JS-world
    Web app: https://dovahkiin1991.github.io/a-tiny-JS-world/
    */
-
-// ======== OBJECTS DEFINITIONS ========
-// Define your objects here
-const dog = {
-    species: 'dog',
-    name: 'Toby',
-    gender: 'male',
-    legs: 4,
-    hands: 0,
-    saying: 'woof-woof!'
-};
-
-const cat = {
-    species: 'cat',
-    name: 'Simba',
-    gender: 'female',
-    legs: 4,
-    hands: 0,
-    saying: 'meuw-meuw!'
-};
-
-const woman = {
-    species: 'woman',
-    name: 'Katie',
-    gender: 'female',
-    legs: 2,
-    hands: 2,
-    saying: 'Hey, my name is Katie!'
-};
-
-const man = {
-    species: 'man',
-    name: 'Alex',
-    gender: 'male',
-    legs: 2,
-    hands: 2,
-    saying: 'Hey, my name is Alex!'
-};
-
 // ======== OUTPUT ========
-const inhabitantsList = [dog, cat, woman, man];
+class Creature {
+    constructor(species, name, gender, legs, hands, saying) {
+        this.species = species;
+        this.name = name;
+        this.gender = gender;
+        this.legs = legs;
+        this.hands = hands;
+        this.saying = saying;
+    }
 
-const inhabitantKeys = ["species", "name", "gender", "legs", "hands", "saying"];
+    listOfProperties() {
+        return this.name + '; ' + this.gender + '; ' + this.legs + '; ' + this.hands + '; ' + this.saying;
+    }
+}
+
+class Human extends Creature {
+    constructor(species, name, gender, legs, hands) {
+        super(species, name, gender, legs, hands, `Hey, my name is ${name}!`)
+    }
+}
+
+class Man extends Human {
+    constructor(name, gender, legs, hands, saying) {
+        super('man', name, gender, legs, hands, saying)
+    }
+}
+
+class Woman extends Human {
+    constructor(name, gender, legs, hands, saying) {
+        super('woman', name, gender, legs, hands, saying)
+    }
+}
+
+class Animal extends Creature {
+    constructor(species, name, gender, legs, hands, saying) {
+        super(species, name, gender, legs, hands, saying)
+    }
+}
+
+class Cat extends Animal {
+    constructor(name, gender, legs, hands) {
+        super('cat', name, gender, legs, hands, 'meuw-meuw!');
+    }
+}
+class Dog extends Animal {
+    constructor(name, gender, legs, hands) {
+        super('dog', name, gender, legs, hands, 'woof-woof!');
+    }
+}
+
+const inhabitantsList = [
+    new Man('Alex', 'male', 2, 2),
+    new Woman('Katie', 'female', 2, 2),
+    new Cat('Simba', 'female', 4, 0),
+    new Dog('Toby', 'male', 4, 0),
+];
 
 inhabitantsList.map((inhabitant) => {
-   print(inhabitantKeys.map((key) => inhabitant[key]).join(', '), 'div');
+    print(inhabitant.listOfProperties(), 'div');
 });
