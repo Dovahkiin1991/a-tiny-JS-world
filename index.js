@@ -6,6 +6,7 @@ import { print } from './js/lib.js';
    Web app: https://dovahkiin1991.github.io/a-tiny-JS-world/
    */
 // ======== OUTPUT ========
+const UNSET_VALUE = 'unset';
 class Creature {
     constructor(species, name, gender, legs, hands, saying) {
         this.species = species;
@@ -17,7 +18,14 @@ class Creature {
     }
 
     listOfProperties() {
-        return this.name + '; ' + this.gender + '; ' + this.legs + '; ' + this.hands + '; ' + this.saying;
+        return `
+            species - ${this.species = this.species || UNSET_VALUE};
+            name - ${this.name = this.name || UNSET_VALUE}; 
+            gender - ${this.gender = this.gender || UNSET_VALUE}; 
+            legs - ${this.legs = this.legs || UNSET_VALUE}; 
+            hands - ${this.hands = this.hands || UNSET_VALUE}; 
+            saying - ${this.saying = this.saying || UNSET_VALUE};
+        `;
     }
 }
 
@@ -46,21 +54,21 @@ class Animal extends Creature {
 }
 
 class Cat extends Animal {
-    constructor(name, gender, legs, hands) {
-        super('cat', name, gender, legs, hands, 'meuw-meuw!');
+    constructor(name, gender, legs) {
+        super('cat', name, gender, legs, '', 'meuw-meuw!');
     }
 }
 class Dog extends Animal {
-    constructor(name, gender, legs, hands) {
-        super('dog', name, gender, legs, hands, 'woof-woof!');
+    constructor(name, gender, legs) {
+        super('dog', name, gender, legs, '', 'woof-woof!');
     }
 }
 
 const inhabitantsList = [
     new Man('Alex', 'male', 2, 2),
     new Woman('Katie', 'female', 2, 2),
-    new Cat('Simba', 'female', 4, 0),
-    new Dog('Toby', 'male', 4, 0),
+    new Cat('Simba', 'female', 4),
+    new Dog('Toby', 'male', 4),
 ];
 
 inhabitantsList.map((inhabitant) => {
